@@ -7,22 +7,22 @@ Function New-BsImageGallery {
         Create a new image in the system
 
     .PARAMETER Type
-
-
-    .PARAMETER Name
-
+        Specifies the image type to create.  Either 'gallery' or 'drawio'.  'drawio' should only be used when the file is a PNG file with diagrams.net image data embedded within
 
     .PARAMETER PageId
-
+        Specifies the page to assign the image to
 
     .PARAMETER Image
+        Path to the file to upload
 
+    .PARAMETER Name
+        Specifies the name of the file.  If the parameter is omitted, the filename of the provided image file will be used instead
 
     .EXAMPLE
-        New-BsImageGallery
+        New-BsImageGallery -Type 'gallery' -PageId 13 -Image '/media/file1.jpg'
 
     .EXAMPLE
-        New-BsImageGallery
+        New-BsImageGallery -Type 'drawio' -PageId 13 -Image '/media/draw1.png' -Name 'Diagram 1'
 
     .NOTES
         For additional information please see my GitHub wiki page

@@ -12,19 +12,23 @@ Function Update-BsPermission {
     .PARAMETER Id
         The identifier of the content
 
-    .PARAMETER
+    .PARAMETER OwnerId
+        The identifier of the owner to assign the content to
 
-    .PARAMETER
+    .PARAMETER RolePermission
+        Permissions to assign to the content, must include all options (view, create, update, delete)
 
-    .PARAMETER
+    .PARAMETER RemoveRolePermission
+        Option to remove all current role permissions
 
-    .PARAMETER
-
-    .PARAMETER
+    .PARAMETER FallbackPermission
+        Specifies any fallback permissions
 
     .EXAMPLE
+        Update-BsPermission -ContentType 'book' -Id 13 -RolePermission @{role_id=14; view=$true; create=$false; update=$false; delete=$false;}
 
     .EXAMPLE
+        Update-BsPermission -ContentType 'book' -Id 13 -OwnerId 7 -RemoveRolePermissions
 
     .NOTES
         For additional information please see my GitHub wiki page
