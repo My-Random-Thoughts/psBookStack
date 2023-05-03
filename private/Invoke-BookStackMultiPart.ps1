@@ -31,7 +31,7 @@ Function Invoke-BookStackMultiPart {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $true)]
-        [ValidatePattern({^shelves*|^books*|^attachments*})]
+        [ValidatePattern({^shelves*|^books*|^attachments*|^image-gallery*})]
         [string]$UrlFunction,
 
         [Parameter(Mandatory = $true)]
@@ -83,10 +83,11 @@ Function Invoke-BookStackMultiPart {
             }
             Else {
                 Switch -Regex ($UrlFunction) {
-                    '^shelves*'     { Return (Get-BsShelf      -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
-                    '^books*'       { Return (Get-BsBook       -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
-                    '^attachments*' { Return (Get-BsAttachment -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
-                    Default         { Return "Unknown UrlFunction: $UrlFunction" }
+                    '^shelves*'       { Return (Get-BsShelf        -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
+                    '^books*'         { Return (Get-BsBook         -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
+                    '^attachments*'   { Return (Get-BsAttachment   -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
+                    '^image-gallery*' { Return (Get-BsImageGallery -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
+                    Default           { Write-Error -Message "Unknown UrlFunction: '$UrlFunction'" }
                 }
             }
         }
