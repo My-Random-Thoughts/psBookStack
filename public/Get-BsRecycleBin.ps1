@@ -15,6 +15,9 @@ Function Get-BsRecycleBin {
     .EXAMPLE
         Get-BsRecycleBin
 
+    .FUNCTIONALITY
+        GET: recycle-bin
+
     .NOTES
         For additional information please see my GitHub wiki page
 

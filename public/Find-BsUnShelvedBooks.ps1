@@ -9,6 +9,8 @@ Function Find-BsUnShelvedBooks {
     .EXAMPLE
         Find-BsUnShelvedBooks
 
+    .FUNCTIONALITY
+
     .NOTES
         For additional information please see my GitHub wiki page
 

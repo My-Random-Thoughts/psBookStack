@@ -12,6 +12,9 @@ Function Remove-BsBook {
     .EXAMPLE
         Remove-BsBook -Id 13
 
+    .FUNCTIONALITY
+        DELETE: books/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

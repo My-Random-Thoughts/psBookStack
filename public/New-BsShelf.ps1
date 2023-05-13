@@ -24,6 +24,9 @@ Function New-BsShelf {
     .EXAMPLE
         New-BsShelf -Name 'My shelf' -Description 'This is my shelf'
 
+    .FUNCTIONALITY
+        POST: shelves
+
     .NOTES
         For additional information please see my GitHub wiki page
 

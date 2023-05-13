@@ -21,6 +21,10 @@ Function Get-BsChapter {
     .EXAMPLE
         Get-BsChapter -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: chapters
+        GET: chapters/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

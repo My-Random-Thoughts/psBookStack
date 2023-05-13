@@ -15,6 +15,9 @@ Function Restore-BsRecycleBinItem {
     .EXAMPLE
         Get-BsRecycleBinItem | Restore-BsRecycleBinItem
 
+    .FUNCTIONALITY
+        PUT: recycle-bin/{deletionId}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

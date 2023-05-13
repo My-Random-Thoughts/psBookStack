@@ -18,6 +18,12 @@ Function Export-BsChapter {
     .EXAMPLE
         Export-BsChapter -Id 13 -Format html | Out-File -FilePath ...
 
+    .FUNCTIONALITY
+        GET: chapters/{id}/export/html
+        GET: chapters/{id}/export/pdf
+        GET: chapters/{id}/export/plaintext
+        GET: chapters/{id}/export/markdown
+
     .NOTES
         For additional information please see my GitHub wiki page
 

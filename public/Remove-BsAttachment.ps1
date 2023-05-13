@@ -12,6 +12,9 @@ Function Remove-BsAttachment {
     .EXAMPLE
         Remove-BsAttachment -Id 13
 
+    .FUNCTIONALITY
+        DELETE: attachments/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

@@ -21,6 +21,8 @@ Function Connect-BookStackAPI {
     .EXAMPLE
         Connect-BookStackAPI -HostName https://10.1.2.3:443 -Token abcde:12345
 
+    .FUNCTIONALITY
+
     .NOTES
         For additional information please see my GitHub wiki page
 

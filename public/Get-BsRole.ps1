@@ -15,6 +15,10 @@ Function Get-BsRole {
     .EXAMPLE
         Get-BsRole -Id 13
 
+    .FUNCTIONALITY
+        GET: roles
+        GET: roles/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

@@ -21,6 +21,10 @@ Function Get-BsUser {
     .EXAMPLE
         Get-BsUser -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: users
+        GET: users/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

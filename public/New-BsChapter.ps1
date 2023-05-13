@@ -24,6 +24,9 @@ Function New-BsChapter {
     .EXAMPLE
         New-BsChapter -BookId 13 -Name 'My New Chapter' -Tag @{'Topic'='Testing'}
 
+    .FUNCTIONALITY
+        POST: chapters
+
     .NOTES
         For additional information please see my GitHub wiki page
 

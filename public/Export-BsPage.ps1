@@ -18,6 +18,12 @@ Function Export-BsPage {
     .EXAMPLE
         Export-BsPage -Id 13 -Format html | Out-File -FilePath ...
 
+    .FUNCTIONALITY
+        GET: pages/{id}/export/html
+        GET: pages/{id}/export/pdf
+        GET: pages/{id}/export/plaintext
+        GET: pages/{id}/export/markdown
+
     .NOTES
         For additional information please see my GitHub wiki page
 

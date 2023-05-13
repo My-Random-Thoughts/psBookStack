@@ -15,6 +15,9 @@ Function Update-BsImageGallery {
     .EXAMPLE
         Update-BsImageGallery -Id 13 -Name 'My own book'
 
+    .FUNCTIONALITY
+        PUT: image-gallery/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

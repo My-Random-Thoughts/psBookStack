@@ -30,6 +30,9 @@ Function New-BsPage {
     .EXAMPLE
         New-BsPage ChapterId 13 -Name 'The New Page' Markdown '~~Hello World~~'
 
+    .FUNCTIONALITY
+        POST: pages
+
     .NOTES
         For additional information please see my GitHub wiki page
 

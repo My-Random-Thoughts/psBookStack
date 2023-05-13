@@ -15,6 +15,9 @@ Function Remove-BsRecycleBinItem {
     .EXAMPLE
         Get-BsRecycleBinItem | Remove-BsRecycleBinItem
 
+    .FUNCTIONALITY
+        DELETE: recycle-bin/{deletionId}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

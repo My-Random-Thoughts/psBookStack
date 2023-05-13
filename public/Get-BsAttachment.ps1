@@ -21,6 +21,10 @@ Function Get-BsAttachment {
     .EXAMPLE
         Get-BsAttachment -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: attachments
+        GET: attachments/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

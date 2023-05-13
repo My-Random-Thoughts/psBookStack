@@ -24,6 +24,9 @@ Function New-BsAttachment {
     .EXAMPLE
         New-BsAttachment -Id 13 -Name 'Example Web Site' -Link 'http://www.example.com/'
 
+    .FUNCTIONALITY
+        POST: attachments
+
     .NOTES
         For additional information please see my GitHub wiki page
 

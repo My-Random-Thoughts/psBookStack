@@ -30,6 +30,9 @@ Function Update-BsBook {
     .EXAMPLE
         Update-BsBook -Id 13 -Name 'My own book' -Tag @{Type = 'Book'; Topic = 'Testing'}
 
+    .FUNCTIONALITY
+        PUT: books/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

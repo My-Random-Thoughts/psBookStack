@@ -27,6 +27,9 @@ Function New-BsBook {
     .EXAMPLE
         New-BsBook -ShelfId 13 -Name 'My own book' -Tag @{'Type'='Book'; 'Topic'='Testing'}
 
+    .FUNCTIONALITY
+        POST: books
+
     .NOTES
         For additional information please see my GitHub wiki page
 

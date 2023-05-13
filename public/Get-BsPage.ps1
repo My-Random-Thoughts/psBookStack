@@ -21,6 +21,10 @@ Function Get-BsPage {
     .EXAMPLE
         Get-BsPage -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: pages
+        GET: pages/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

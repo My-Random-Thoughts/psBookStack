@@ -30,6 +30,9 @@ Function Update-BsPermission {
     .EXAMPLE
         Update-BsPermission -ContentType 'book' -Id 13 -OwnerId 7 -RemoveRolePermissions
 
+    .FUNCTIONALITY
+        PUT: content-permissions/{contentType}/{contentId}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

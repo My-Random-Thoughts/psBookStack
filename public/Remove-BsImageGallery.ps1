@@ -12,6 +12,9 @@ Function Remove-BsImageGallery {
     .EXAMPLE
         Remove-BsImageGallery -Id 13
 
+    .FUNCTIONALITY
+        DELETE: image-gallery/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

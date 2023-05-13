@@ -18,6 +18,9 @@ Function Remove-BsUser {
     .EXAMPLE
         Remove-BsUser -Id 13 -MigrateOwnershipId 31
 
+    .FUNCTIONALITY
+        DELETE: users/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

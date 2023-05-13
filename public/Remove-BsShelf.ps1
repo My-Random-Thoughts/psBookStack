@@ -12,6 +12,9 @@ Function Remove-BsShelf {
     .EXAMPLE
         Remove-BsShelf -Id 13
 
+    .FUNCTIONALITY
+        DELETE: shelves/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

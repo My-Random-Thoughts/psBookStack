@@ -27,6 +27,9 @@ Function New-BsRole {
     .EXAMPLE
         New-BsRole -Name 'New Role' -Permission ('restrictions-manage-own','access-api','content-export')
 
+    .FUNCTIONALITY
+        POST: roles
+
     .NOTES
         For additional information please see my GitHub wiki page
 

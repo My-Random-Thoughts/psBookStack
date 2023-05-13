@@ -33,6 +33,9 @@ Function Update-BsShelf {
     .EXAMPLE
         Update-BsShelf -Id 13 -RemoveCoverImage
 
+    .FUNCTIONALITY
+        PUT: shelves/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

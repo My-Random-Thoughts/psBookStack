@@ -18,6 +18,9 @@ Function Get-BsPermission {
     .EXAMPLE
         Get-BsPermission -ContentType 'bookshelf' -Id 13
 
+    .FUNCTIONALITY
+        GET: content-permissions/{contentType}/{contentId}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

@@ -9,6 +9,8 @@ Function Clear-BsRecycleBin {
     .EXAMPLE
         Clear-BsRecycleBin
 
+    .FUNCTIONALITY
+
     .NOTES
         For additional information please see my GitHub wiki page
 

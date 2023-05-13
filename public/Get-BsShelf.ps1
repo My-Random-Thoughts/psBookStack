@@ -21,6 +21,10 @@ Function Get-BsShelf {
     .EXAMPLE
         Get-BsShelf -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: shelves
+        GET: shelves/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

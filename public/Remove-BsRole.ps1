@@ -12,6 +12,9 @@ Function Remove-BsRole {
     .EXAMPLE
         Remove-BsRole -Id 13
 
+    .FUNCTIONALITY
+        DELETE: roles/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

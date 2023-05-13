@@ -18,6 +18,12 @@ Function Export-BsBook {
     .EXAMPLE
         Export-BsBook -Id 13 -Format html | Out-File -FilePath ...
 
+    .FUNCTIONALITY
+        GET: books/{id}/export/html
+        GET: books/{id}/export/pdf
+        GET: books/{id}/export/plaintext
+        GET: books/{id}/export/markdown
+
     .NOTES
         For additional information please see my GitHub wiki page
 

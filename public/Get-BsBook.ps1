@@ -21,6 +21,10 @@ Function Get-BsBook {
     .EXAMPLE
         Get-BsBook -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: books
+        GET: books/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

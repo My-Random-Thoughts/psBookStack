@@ -27,6 +27,9 @@ Function Update-BsChapter {
     .EXAMPLE
         Update-BsChapter -Id 13 -Name 'My Updated Chapter'
 
+    .FUNCTIONALITY
+        PUT: chapters/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

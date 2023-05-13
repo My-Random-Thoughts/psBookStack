@@ -15,6 +15,9 @@ Function Search-BsBookStack {
     .EXAMPLE
         Search-BsBookStack -Query '"london meeting"'
 
+    .FUNCTIONALITY
+        GET: search
+
     .NOTES
         For additional information please see my GitHub wiki page
 

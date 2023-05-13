@@ -21,6 +21,10 @@ Function Get-BsImageGallery {
     .EXAMPLE
         Get-BsPage -Filter '[id:lt]=10'
 
+    .FUNCTIONALITY
+        GET: image-gallery
+        GET: image-gallery/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

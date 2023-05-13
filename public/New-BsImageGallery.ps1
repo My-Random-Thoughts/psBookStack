@@ -24,6 +24,9 @@ Function New-BsImageGallery {
     .EXAMPLE
         New-BsImageGallery -Type 'drawio' -PageId 13 -Image '/media/draw1.png' -Name 'Diagram 1'
 
+    .FUNCTIONALITY
+        POST: image-gallery
+
     .NOTES
         For additional information please see my GitHub wiki page
 

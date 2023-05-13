@@ -21,6 +21,9 @@ Function Update-BsAttachment {
     .PARAMETER Link
         URL to link to
 
+    .FUNCTIONALITY
+        PUT: attachments/{id}
+
     .EXAMPLE
         Update-BsAttachment -id 13 -PageId 27 -Name 'Presentation (2).odf'
 

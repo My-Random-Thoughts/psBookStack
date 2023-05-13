@@ -12,6 +12,9 @@ Function Remove-BsChapter {
     .EXAMPLE
         Remove-BsChapter -Id 13
 
+    .FUNCTIONALITY
+        DELETE: chapters/{id}
+
     .NOTES
         For additional information please see my GitHub wiki page
 

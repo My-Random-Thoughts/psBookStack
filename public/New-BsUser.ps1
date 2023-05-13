@@ -33,6 +33,9 @@ Function New-BsUser {
     .EXAMPLE
         New-BsUser -Name 'Bob Smith' -Email 'bob@example.com' -RoleId 4 -Language 'fr' -SendInvite
 
+    .FUNCTIONALITY
+        POST: users
+
     .NOTES
         For additional information please see my GitHub wiki page
 
@@ -87,7 +90,6 @@ Function New-BsUser {
             $apiQuery += @{ roles = $RoleId }
         }
 
-        Write-Output $apiQuery
         Invoke-BookStackQuery -UrlFunction 'users' -RestMethod Post -ApiQuery $apiQuery
     }
 
