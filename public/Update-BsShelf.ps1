@@ -43,7 +43,7 @@ Function Update-BsShelf {
         https://github.com/My-Random-Thoughts/psBookStack
 #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'none')]
     Param (
         [Parameter(Mandatory = $true)]
         [int]$Id,
