@@ -41,5 +41,5 @@ Function Export-BsPage {
         [string]$Format
     )
 
-    Write-Output (Invoke-PageStackQuery -UrlFunction "pages/$id/export/$($Format.ToLower())" -RestMethod Get)
+    Write-Output (Invoke-BookStackQuery -UrlFunction "pages/$id/export/$($Format.ToLower())" -RestMethod Get)
 }
