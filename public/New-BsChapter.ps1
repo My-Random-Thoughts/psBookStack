@@ -15,6 +15,9 @@ Function New-BsChapter {
     .PARAMETER Description
         The description of the new chapter
 
+    .PARAMETER DescriptionHTML
+        The HTML description of the new chapter, supports: <strong>, <em>, <a>, <ul>, and <ol>
+
     .PARAMETER Tags
         Any tags to assign to the new chapter
 
@@ -34,7 +37,7 @@ Function New-BsChapter {
         https://github.com/My-Random-Thoughts/psBookStack
 #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'none')]
     Param (
         [Parameter(Mandatory = $true)]
         [int]$BookId,
@@ -43,8 +46,13 @@ Function New-BsChapter {
         [ValidateLength(1,255)]
         [string]$Name,
 
+        [Parameter(ParameterSetName = 'nonHtmlDesc')]
         [ValidateLength(0,1000)]
         [string]$Description,
+
+        [Parameter(ParameterSetName = 'htmlDesc')]
+        [ValidateLength(0,2000)]
+        [string]$DescriptionHTML,
 
         [hashtable]$Tag
     )
@@ -60,6 +68,9 @@ Function New-BsChapter {
 
         If ($Description) {
             $apiQuery += @{ description = $Description }
+        }
+        ElseIf ($DescriptionHTML) {
+            $apiQuery += @{ description_html = $DescriptionHTML }
         }
 
         If ($Tag) {

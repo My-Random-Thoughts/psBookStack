@@ -12,6 +12,9 @@ Function New-BsShelf {
     .PARAMETER Description
         The description of the new shelf
 
+    .PARAMETER DescriptionHTML
+        The HTML description of the new shelf, supports: <strong>, <em>, <a>, <ul>, and <ol>
+
     .PARAMETER Books
         List of book ids to add to the new shelf
 
@@ -34,14 +37,19 @@ Function New-BsShelf {
         https://github.com/My-Random-Thoughts/psBookStack
 #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'none')]
     Param (
         [Parameter(Mandatory = $true)]
         [ValidateLength(1,255)]
         [string]$Name,
 
+        [Parameter(ParameterSetName = 'nonHtmlDesc')]
         [ValidateLength(0,1000)]
         [string]$Description,
+
+        [Parameter(ParameterSetName = 'htmlDesc')]
+        [ValidateLength(0,2000)]
+        [string]$DescriptionHTML,
 
         [int[]]$Books,
 
@@ -65,6 +73,9 @@ Function New-BsShelf {
 
         If ($Description) {
             $apiQuery += @{ description = $Description }
+        }
+        ElseIf ($DescriptionHTML) {
+            $apiQuery += @{ description_html = $DescriptionHTML }
         }
 
         If ($Books) {

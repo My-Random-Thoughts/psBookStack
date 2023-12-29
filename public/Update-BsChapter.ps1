@@ -18,6 +18,9 @@ Function Update-BsChapter {
     .PARAMETER Description
         The new description of the chapter
 
+    .PARAMETER DescriptionHTML
+        The new HTML description of the chapter, supports: <strong>, <em>, <a>, <ul>, and <ol>
+
     .PARAMETER Tags
         Any new tags to assign to the chapter
 
@@ -37,7 +40,7 @@ Function Update-BsChapter {
         https://github.com/My-Random-Thoughts/psBookStack
 #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'none')]
     Param (
         [Parameter(Mandatory = $true)]
         [int]$Id,
@@ -47,8 +50,13 @@ Function Update-BsChapter {
         [ValidateLength(1,255)]
         [string]$Name,
 
+        [Parameter(ParameterSetName = 'nonHtmlDesc')]
         [ValidateLength(0,1000)]
         [string]$Description,
+
+        [Parameter(ParameterSetName = 'htmlDesc')]
+        [ValidateLength(0,2000)]
+        [string]$DescriptionHTML,
 
         [hashtable]$Tag
     )
@@ -69,6 +77,9 @@ Function Update-BsChapter {
 
         If ($Description) {
             $apiQuery += @{ description = $Description }
+        }
+        ElseIf ($DescriptionHTML) {
+            $apiQuery += @{ description_html = $DescriptionHTML }
         }
 
         If ($Tag) {

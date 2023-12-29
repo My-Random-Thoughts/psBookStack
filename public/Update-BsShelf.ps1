@@ -13,7 +13,10 @@ Function Update-BsShelf {
         The name of the shelf
 
     .PARAMETER Description
-        The description of the shelf
+        The new description of the shelf
+
+    .PARAMETER DescriptionHTML
+        The new HTML description of the shelf, supports: <strong>, <em>, <a>, <ul>, and <ol>
 
     .PARAMETER Books
         The list of book IDs that this shelf contains. These will be added to the shelf in the same order as provided and overwrite any existing book assignments
@@ -51,8 +54,13 @@ Function Update-BsShelf {
         [ValidateLength(0,255)]
         [string]$Name,
 
+        [Parameter(ParameterSetName = 'nonHtmlDesc')]
         [ValidateLength(0,1000)]
         [string]$Description,
+
+        [Parameter(ParameterSetName = 'htmlDesc')]
+        [ValidateLength(0,2000)]
+        [string]$DescriptionHTML,
 
         [int[]]$Books,
 
@@ -82,6 +90,9 @@ Function Update-BsShelf {
 
         If ($Description) {
             $apiQuery += @{ description = $Description }
+        }
+        ElseIf ($DescriptionHTML) {
+            $apiQuery += @{ description_html = $DescriptionHTML }
         }
 
         If ($Books) {

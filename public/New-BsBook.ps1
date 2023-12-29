@@ -15,6 +15,9 @@ Function New-BsBook {
     .PARAMETER Description
         The description of the new book
 
+    .PARAMETER DescriptionHTML
+        The HTML description of the new book, supports: <strong>, <em>, <a>, <ul>, and <ol>
+
     .PARAMETER Tags
         Any tags to assign to the new book
 
@@ -37,7 +40,7 @@ Function New-BsBook {
         https://github.com/My-Random-Thoughts/psBookStack
 #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'none')]
     Param (
         [Parameter(Mandatory = $true)]
         [int]$ShelfId,
@@ -46,8 +49,13 @@ Function New-BsBook {
         [ValidateLength(1,255)]
         [string]$Name,
 
+        [Parameter(ParameterSetName = 'nonHtmlDesc')]
         [ValidateLength(0,1000)]
         [string]$Description,
+
+        [Parameter(ParameterSetName = 'htmlDesc')]
+        [ValidateLength(0,2000)]
+        [string]$DescriptionHTML,
 
         [hashtable]$Tag,
 
@@ -73,8 +81,11 @@ Function New-BsBook {
             name = $Name
         }
 
-        if ($Description) {
+        If ($Description) {
             $apiQuery += @{ description = $Description }
+        }
+        ElseIf ($DescriptionHTML) {
+            $apiQuery += @{ description_html = $DescriptionHTML }
         }
 
         If ($Tag) {
