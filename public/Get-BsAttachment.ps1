@@ -12,11 +12,14 @@ Function Get-BsAttachment {
     .PARAMETER Filter
         Specifies a filter to help narrow down results
 
+    .PARAMETER Decode
+        Optional switch to decode the content from a Base64 string.
+
     .EXAMPLE
         Get-BsAttachment
 
     .EXAMPLE
-        Get-BsAttachment -Id 13
+        Get-BsAttachment -Id 13 -Decode
 
     .EXAMPLE
         Get-BsAttachment -Filter '[id:lt]=10'
@@ -34,15 +37,32 @@ Function Get-BsAttachment {
 
     [CmdletBinding(DefaultParameterSetName = 'none')]
     Param (
-        [Parameter(ParameterSetName = 'id')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'id')]
         [int]$Id,
 
         [Parameter(ParameterSetName = 'filter')]
-        [string]$Filter
+        [string]$Filter,
+
+        [Parameter(ParameterSetName = 'id')]
+        [switch]$Decode
     )
 
+    Function decode {
+        Param (
+            [Parameter(Mandatory = $true)]
+            [string]$inputString
+        )
+
+        Return ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($inputString)))
+    }
+
+
     If ($Id) {
-        Write-Output (Invoke-BookStackQuery -UrlFunction "attachments/$Id" -RestMethod Get)
+        $attachment = (Invoke-BookStackQuery -UrlFunction "attachments/$Id" -RestMethod Get)
+        If ($Decode.IsPresent) {
+            Add-Member -InputObject $attachment -MemberType NoteProperty -Name "content_decoded" -Value (decode($attachment.content))
+        }
+        Write-Output $attachment
     }
     Else {
         If ($Filter) { $parsedFilter = "?filter$Filter" }
