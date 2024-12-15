@@ -48,12 +48,8 @@ Function Update-BsPage {
         [Parameter(Mandatory = $true)]
         [int]$Id,
 
-        [Parameter(ParameterSetName = 'book-html')]
-        [Parameter(ParameterSetName = 'book-mark')]
         [int]$BookId,
 
-        [Parameter(ParameterSetName = 'chap-html')]
-        [Parameter(ParameterSetName = 'chap-mark')]
         [int]$ChapterId,
 
         [ValidateLength(1,255)]
@@ -61,16 +57,15 @@ Function Update-BsPage {
 
         [hashtable]$Tag,
 
-        [Parameter(ParameterSetName = 'book-html')]
-        [Parameter(ParameterSetName = 'chap-html')]
         [string]$Html,
 
-        [Parameter(ParameterSetName = 'book-mark')]
-        [Parameter(ParameterSetName = 'chap-mark')]
         [string]$Markdown
     )
 
     Begin {
+        # Can't do this via 'ParameterSetName'...
+        If ($BookId -and $ChapterId) { Throw 'Please supply only "BookId" OR "ChapterId", not both' }
+        If ($Html   -and $Markdown)  { Throw 'Please supply only "Html" OR "Markdown", not both' }
     }
 
     Process {
@@ -79,7 +74,6 @@ Function Update-BsPage {
         If ($Name) {
             $apiQuery += @{ name = $Name }
         }
-
         If ($BookId) {
             $apiQuery += @{ book_id = $BookId }
         }
