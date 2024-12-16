@@ -84,9 +84,17 @@ Function Update-BsChapter {
 
         If ($Tag) {
             $bsTags = @()
+
+            # Add all existing keys first...
+            (Get-BsChapter -id $Id).tags | ForEach-Object {
+                $bsTags += @{'name' = $_.name; 'value' = $_.value}
+            }
+
+            # Add new keys...
             ForEach ($TagKey In $Tag.Keys) {
                 $bsTags += @{'name' = $TagKey; 'value' = $Tag.$TagKey}
             }
+
             $apiQuery += @{ tags = $bsTags }
         }
 
