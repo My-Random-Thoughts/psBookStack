@@ -74,24 +74,38 @@ Function Update-BsPage {
         If ($Name) {
             $apiQuery += @{ name = $Name }
         }
+
         If ($BookId) {
             $apiQuery += @{ book_id = $BookId }
         }
+
         If ($ChapterId) {
             $apiQuery += @{ chapter_id = $ChapterId }
         }
+
         If ($Html) {
             $apiQuery += @{ html = $Html }
         }
+
         If ($Markdown) {
             $apiQuery += @{ markdown = $Markdown }
         }
 
         If ($Tag) {
             $bsTags = @()
-            ForEach ($TagKey In $Tag.Keys) {
-                $bsTags += @{'name' = $TagKey; 'value' = $Tag.$TagKey}
+
+            # Add all existing keys first...
+            (Get-BsPage -id $Id).tags | ForEach-Object {
+                $bsTags += @{'name' = $_.name; 'value' = $_.value}
             }
+
+            # Add new keys...
+            ForEach ($TagKey In $Tag.Keys) {
+                If (-not ($TagKey.StartsWith('-'))) {
+                    $bsTags += @{'name' = $TagKey; 'value' = $Tag.$TagKey}
+                }
+            }
+
             $apiQuery += @{ tags = $bsTags }
         }
 
