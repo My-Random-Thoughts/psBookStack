@@ -101,9 +101,7 @@ Function Update-BsPage {
 
             # Add new keys...
             ForEach ($TagKey In $Tag.Keys) {
-                If (-not ($TagKey.StartsWith('-'))) {
-                    $bsTags += @{'name' = $TagKey; 'value' = $Tag.$TagKey}
-                }
+                $bsTags += @{'name' = $TagKey; 'value' = $Tag.$TagKey}
             }
 
             $apiQuery += @{ tags = $bsTags }
