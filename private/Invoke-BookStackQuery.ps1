@@ -15,8 +15,8 @@ Function Invoke-BookStackQuery {
     .PARAMETER RestMethod
         One of "Default, Delete, Get, Head, Merge, Options, Patch, Post, Put, Trace"
 
-    .PARAMETER RemoveCoverImage
-        Option to remove the current cover image
+    .PARAMETER FileName
+        Filename to use when exporting
 
     .EXAMPLE
         Invoke-BookStackQuery -UrlFunction 'books' -RestMethod Get
@@ -42,7 +42,9 @@ Function Invoke-BookStackQuery {
         [object]$ApiQuery,
 
         [Parameter(Mandatory = $true)]
-        [Microsoft.PowerShell.Commands.WebRequestMethod]$RestMethod
+        [Microsoft.PowerShell.Commands.WebRequestMethod]$RestMethod,
+
+        [string]$FileName
     )
 
     Begin {
@@ -75,7 +77,7 @@ Function Invoke-BookStackQuery {
                 $currentPage = 1
                 $iRestM.Uri += '&page=1'
             }
-            ElseIf ($iRestM.Uri -like '*?filter*') {
+            ElseIf ($iRestM.Uri -like '*?*') {
                 $currentPage = 0
                 $iRestM.Uri += '&offset=0'
             }
@@ -95,7 +97,13 @@ Function Invoke-BookStackQuery {
             Write-Verbose "Executing API method `"$($RestMethod.ToString().ToUpper())`" against `"$($iRestM.Uri)`""
             If ($ApiQuery) { Write-Debug "ApiQuery:`n$($ApiQuery | ConvertTo-Json -Depth 100)" }
 
-            $Output = (Invoke-BookStackRestMethod @iRestM -TimeOut 300)
+            If ($FileName) {
+                Invoke-BookStackRestMethod @iRestM -FileName $FileName
+                Return "Exported as '$FileName'."
+            }
+            Else {
+                $Output = (Invoke-BookStackRestMethod @iRestM -TimeOut 300)
+            }
 
             If ([string]::IsNullOrEmpty($Output) -eq $true) {
                 Return 'No results to return' #$null

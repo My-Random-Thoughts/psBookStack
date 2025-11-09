@@ -31,7 +31,7 @@ Function Invoke-BookStackMultiPart {
     [CmdletBinding()]
     Param (
         [Parameter(Mandatory = $true)]
-        [ValidatePattern({^shelves*|^books*|^attachments*|^image-gallery*})]
+#        [ValidatePattern({^shelves*|^books*|^attachments*|^image-gallery*|^imports*})]
         [string]$UrlFunction,
 
         [Parameter(Mandatory = $true)]
@@ -71,7 +71,8 @@ Function Invoke-BookStackMultiPart {
             }
 
             # Cover Image / Attachment File
-            If ($UrlFunction -eq 'attachments') { $attachmentName = 'file' } Else { $attachmentName = 'image' }
+#            If (($UrlFunction -eq 'attachments') -or ($UrlFunction -eq 'imports')) { $attachmentName = 'file' } Else { $attachmentName = 'image' }
+            $attachmentName = 'file'
             $formData.Add((New-Object -TypeName 'System.Net.Http.StreamContent' ($fileStream)), $attachmentName, $Path.Name)
 
             # Perform POST action
@@ -87,7 +88,8 @@ Function Invoke-BookStackMultiPart {
                     '^books*'         { Return (Get-BsBook         -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
                     '^attachments*'   { Return (Get-BsAttachment   -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
                     '^image-gallery*' { Return (Get-BsImageGallery -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
-                    Default           { Write-Error -Message "Unknown UrlFunction: '$UrlFunction'" }
+                    '^imports*'       { Return (Get-BsImport       -Verbose:$false | Sort-Object -Property 'id' | Select-Object -Last 1); Break }
+                    Default           { Write-Error -Message "Unknown UrlFunction In BookStackMultiPart: '$UrlFunction'" }
                 }
             }
         }

@@ -44,7 +44,9 @@ Function Invoke-BookStackRestMethod {
 
         [string]$ContentType = 'application/json',
 
-        [int]$TimeOut = 15
+        [int]$TimeOut = 15,
+
+        [string]$FileName
     )
 
     Begin {
@@ -63,8 +65,13 @@ Function Invoke-BookStackRestMethod {
     }
 
     Process {
-        If (-not [string]::IsNullOrEmpty($Body)) { $invokeRestMethod += @{ Body = $Body }}
-        Return (Invoke-RestMethod @invokeRestMethod)
+        If (-not [string]::IsNullOrEmpty($FileName)) {
+            Invoke-RestMethod @invokeRestMethod -OutFile $FileName
+        }
+        Else {
+            If (-not [string]::IsNullOrEmpty($Body)) { $invokeRestMethod += @{ Body = $Body }}
+            Return (Invoke-RestMethod @invokeRestMethod)
+        }
     }
 
     End {
