@@ -23,6 +23,7 @@ Function Export-BsPage {
         GET: pages/{id}/export/pdf
         GET: pages/{id}/export/plaintext
         GET: pages/{id}/export/markdown
+        GET: pages/{id}/export/zip
 
     .NOTES
         For additional information please see my GitHub wiki page
@@ -37,9 +38,12 @@ Function Export-BsPage {
         [int]$Id,
 
         [Parameter(Mandatory = $true)]
-        [ValidateSet('html', 'pdf', 'plaintext', 'markdown')]
-        [string]$Format
+        [ValidateSet('html', 'pdf', 'plaintext', 'markdown', 'zip')]
+        [string]$Format,
+
+        [Parameter(Mandatory = $true)]
+        [string]$FileName
     )
 
-    Write-Output (Invoke-BookStackQuery -UrlFunction "pages/$id/export/$($Format.ToLower())" -RestMethod Get)
+    Write-Output (Invoke-BookStackQuery -UrlFunction "pages/$id/export/$($Format.ToLower())" -RestMethod Get -FileName $FileName)
 }

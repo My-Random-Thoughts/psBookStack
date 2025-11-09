@@ -23,6 +23,7 @@ Function Export-BsBook {
         GET: books/{id}/export/pdf
         GET: books/{id}/export/plaintext
         GET: books/{id}/export/markdown
+        GET: books/{id}/export/zip
 
     .NOTES
         For additional information please see my GitHub wiki page
@@ -37,9 +38,12 @@ Function Export-BsBook {
         [int]$Id,
 
         [Parameter(Mandatory = $true)]
-        [ValidateSet('html', 'pdf', 'plaintext', 'markdown')]
-        [string]$Format
+        [ValidateSet('html', 'pdf', 'plaintext', 'markdown', 'zip')]
+        [string]$Format,
+
+        [Parameter(Mandatory = $true)]
+        [string]$FileName
     )
 
-    Write-Output (Invoke-BookStackQuery -UrlFunction "books/$id/export/$($Format.ToLower())" -RestMethod Get)
+    Write-Output (Invoke-BookStackQuery -UrlFunction "books/$id/export/$($Format.ToLower())" -RestMethod Get -FileName $FileName)
 }
