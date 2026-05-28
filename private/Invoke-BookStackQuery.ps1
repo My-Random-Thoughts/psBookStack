@@ -77,7 +77,7 @@ Function Invoke-BookStackQuery {
                 $currentPage = 1
                 $iRestM.Uri += '&page=1'
             }
-            ElseIf ($iRestM.Uri -like '*?*') {
+            ElseIf ($iRestM.Uri -match '\?') {
                 $currentPage = 0
                 $iRestM.Uri += '&offset=0'
             }
